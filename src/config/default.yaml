@@ -1,0 +1,66 @@
+  # SAR System Configuration
+
+radar:
+  # AWR1843 Parameters
+  center_frequency: 77.0e9    # Hz
+  bandwidth: 2.0e9           # Hz
+  chirp_time: 50e-6          # seconds
+  idle_time: 0.0             # seconds
+  num_samples: 256           # ADC samples per chirp
+  num_chirps: 300            # Chirps per aperture
+  
+  # Antenna Parameters
+  azimuth_beamwidth: 80      # degrees
+  elevation_beamwidth: 30    # degrees
+  antenna_spacing: 0.5       # lambda
+
+motion:
+  # Linear Stage Parameters
+  aperture_length: 0.3       # meters
+  step_size: 0.001          # meters between chirps
+  velocity: 0.01            # m/s (for continuous motion)
+  start_position: 0.0       # meters
+  
+  # Synchronization
+  trigger_delay: 0.0        # seconds
+  capture_mode: "continuous"  # or "stop-and-hop"
+
+processing:
+  # Algorithm Selection
+  algorithm: "range_doppler"  # "backprojection", "omega_k"
+  
+  # Processing Parameters
+  apply_window: true
+  window_type: "hamming"     # "hann", "blackman", "rectangular"
+  apply_rcmc: true
+  rcmc_method: "linear"      # "stolt", "polynomial"
+  
+  # Autofocus
+  autofocus: false
+  autofocus_method: "phase_gradient"
+  
+  # Output
+  output_format: "complex"   # "magnitude", "phase", "complex"
+  db_scale: true
+
+visualization:
+  colormap: "hot"
+  dynamic_range: 40          # dB for display
+  show_phase: true
+  save_figures: true
+  figure_format: "png"
+  dpi: 150
+
+data:
+  # File paths
+  raw_data_dir: "data/raw"
+  processed_dir: "data/processed"
+  results_dir: "results"
+  
+  # File formats
+  raw_format: "bin"         # "bin", "npy", "mat"
+  processed_format: "npy"
+  
+  # Metadata
+  save_metadata: true
+  metadata_format: "json"
