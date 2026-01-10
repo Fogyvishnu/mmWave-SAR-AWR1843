@@ -10,7 +10,7 @@ from typing import Tuple, Optional
 class DCA1000Interface:
     """Controls DCA1000 Ethernet Data Capture"""
 
-    def __init__(self, ip_address: str = "192.168.33.180", port: int = 4098):
+    def __init__(self, ip_address: str = "192.168.33.30", port: int = 4098):
         """
         Initialize connection to DCA1000EVM.
 
